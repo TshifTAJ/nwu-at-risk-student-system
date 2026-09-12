@@ -1,228 +1,202 @@
-# NWU At-Risk Student Early Identification & Support System
+# 🎓 NWU At-Risk Student Early Identification & Support System
 
-## Overview
-A comprehensive, integrated system for identifying and supporting at-risk students at North-West University (NWU). This system combines predictive analytics, real-time monitoring, intervention tracking, and support coordination to improve student success and retention.
+## 🎯 Choose Your Installation Method
 
-## 🎯 Key Features
+### ✨ Option 1: One-Click Standalone (Recommended for Most Users)
+**No Docker. No Git. No Terminal. Just Download & Click!**
 
-### 1. **Early Identification Module**
-- Predictive risk scoring using machine learning
-- Multi-factor risk assessment (academic, financial, psychosocial)
-- Real-time anomaly detection
-- Risk stratification (Low, Medium, High, Critical)
+- 📥 Download: `NWU-Student-System.exe` (Windows)
+- ⏱️ Setup time: 30 seconds  
+- 💾 Space needed: 500MB
+- 🖥️ RAM needed: 1GB minimum
+- 👥 All 4 user roles: Learner, Lecturer, Coordinator, Admin
 
-### 2. **Student Analytics Dashboard**
-- Comprehensive student profiles
-- Academic performance tracking
-- Attendance monitoring
-- Financial status insights
-- Psychosocial indicators
+**[👉 Start with ONE-CLICK GUIDE →](STANDALONE_GUIDE.md)**
 
-### 3. **Intervention Management**
-- Automated intervention recommendations
-- Support coordinator assignment
-- Intervention tracking and outcomes
-- Evidence-based intervention library
+---
 
-### 4. **Support Services Coordination**
-- Academic tutoring
-- Financial aid counseling
-- Mental health support
-- Career guidance
-- Peer mentoring
+### 🔧 Option 2: Advanced Docker Version (For Developers)
+**Full control with Docker, Kubernetes, and advanced features**
 
-### 5. **Analytics & Reporting**
-- Real-time dashboards
-- Cohort analysis
-- Success metrics tracking
-- Faculty/staff performance insights
-- Predictive forecasting
+- 🐳 Uses Docker Compose
+- 📦 Complete infrastructure (PostgreSQL, Redis, Elasticsearch)
+- ⚙️ Production-ready configuration  
+- 🔬 Advanced monitoring (Prometheus, Grafana)
+- 👥 All 4 user roles: Learner, Lecturer, Coordinator, Admin
 
-## 🚀 Quick Start
+**[👉 Start with DOCKER GUIDE →](QUICK_START.md)**
 
-### Prerequisites
-- Docker & Docker Compose (recommended)
-- Or: Python 3.11+, PostgreSQL 14+, Node.js 18+, Redis
+---
 
-### Option 1: Docker Setup (Recommended)
+## 👥 User Roles (Both Systems Include All 4)
 
-```bash
-# Clone repository
-git clone https://github.com/TshifTAJ/nwu-at-risk-student-system.git
-cd nwu-at-risk-student-system
+### 👨‍🎓 Learner (Student)
+- ✅ Personal risk dashboard
+- ✅ Academic performance tracking  
+- ✅ Support resource recommendations
+- ✅ Appointment scheduling
+- ✅ Progress tracking
+- ✅ Receive alerts and notifications
 
-# Copy environment file
-cp .env.example .env
+### 👨‍🏫 Lecturer (Faculty)
+- ✅ Class roster with risk indicators
+- ✅ At-risk student alerts
+- ✅ Intervention recommendations
+- ✅ Class-level analytics
+- ✅ Report generation
+- ✅ Monitor student progress
 
-# Start all services
-docker-compose up -d
+### 👤 Coordinator (Support Staff)
+- ✅ Caseload management dashboard
+- ✅ Intervention creation & tracking
+- ✅ Meeting scheduling & documentation
+- ✅ Outcome measurement
+- ✅ Progress reporting
+- ✅ Collaboration tools
 
-# Run migrations
-docker-compose exec backend python manage.py migrate
+### 🔐 Admin (System Administrator)
+- ✅ User management
+- ✅ Institutional analytics
+- ✅ System configuration
+- ✅ Strategic reporting  
+- ✅ Audit logs
+- ✅ Data backup & security
 
-# Create superuser
-docker-compose exec backend python manage.py createsuperuser
+---
 
-# Load sample data (optional)
-docker-compose exec backend python manage.py seed_data
+## 🎯 Key Features (Both Systems)
 
-# Access services
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:8000/api/
-# Admin: http://localhost:8000/admin/
-# Grafana: http://localhost:3001 (admin/admin)
-```
+✅ **Risk Scoring** - Automatic at-risk identification  
+✅ **Interventions** - Support intervention management  
+✅ **Alerts** - Real-time notifications  
+✅ **Analytics** - Dashboard & reporting  
+✅ **Multi-Role Access** - All 4 user types  
+✅ **Data Management** - Student records & history  
+✅ **Reporting** - Custom reports & exports  
+✅ **Real-time Updates** - Live notifications
 
-### Option 2: Manual Setup
+---
 
-```bash
-# Backend Setup
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-
-# Frontend Setup (new terminal)
-cd frontend
-npm install
-npm start
-```
-
-## 📊 Services & Access Points
-
-| Service | URL | Credentials |
-|---------|-----|-------------|
-| **Frontend** | http://localhost:3000 | Login with student/coordinator/admin |
-| **Backend API** | http://localhost:8000/api/ | JWT Token |
-| **Admin Panel** | http://localhost:8000/admin/ | Superuser credentials |
-| **API Docs (Swagger)** | http://localhost:8000/api/docs/ | N/A |
-| **Grafana Monitoring** | http://localhost:3001 | admin / admin |
-| **PostgreSQL** | localhost:5432 | postgres / postgres |
-| **Redis** | localhost:6379 | N/A |
-| **Elasticsearch** | http://localhost:9200 | N/A |
-
-## 🧪 Testing
-
-### Backend Tests
-```bash
-docker-compose exec backend pytest
-docker-compose exec backend pytest tests/students/test_models.py
-docker-compose exec backend pytest --cov=backend tests/
-```
-
-### Frontend Tests
-```bash
-cd frontend
-npm test
-npm test -- --coverage
-```
-
-### Manual Test Scenarios
-
-#### Scenario 1: Student Login & Dashboard
-1. Go to http://localhost:3000
-2. Login with test student credentials
-3. View personal dashboard with risk score and resources
-
-#### Scenario 2: Faculty View At-Risk Students
-1. Login as faculty member
-2. Navigate to "My Classes"
-3. View class risk profiles
-4. Click on at-risk student for details
-
-#### Scenario 3: Support Coordinator Case Management
-1. Login as support coordinator
-2. View assigned caseload
-3. Create/update intervention
-4. Add follow-up tasks
-5. Record outcomes
-
-#### Scenario 4: Real-time Alerts
-1. Simulate critical event
-2. Observe alert notification
-3. Verify alert routing
-4. Confirm task creation
-
-## 📁 Project Structure
+## 🔑 Test Credentials (Both Systems)
 
 ```
-nwu-at-risk-student-system/
-├── backend/                    # Django backend
-│   ├── core/                  # Core Django app
-│   ├── students/              # Student management
-│   ├── risk_scoring/          # Risk scoring engine
-│   ├── interventions/         # Intervention management
-│   ├── analytics/             # Analytics engine
-│   ├── notifications/         # Alert & notification system
-│   ├── api/                   # REST API endpoints
-│   ├── config/                # Django settings
-│   ├── tests/                 # Test suite
-│   ├── manage.py
-│   └── requirements.txt
-├── frontend/                   # React frontend
-│   ├── src/
-│   │   ├── components/        # React components
-│   │   ├── pages/             # Page components
-│   │   ├── services/          # API services
-│   │   ├── store/             # Redux state
-│   │   ├── hooks/             # Custom hooks
-│   │   └── App.tsx
-│   ├── package.json
-│   └── Dockerfile
-├── ml_models/                  # Machine learning models
-│   ├── risk_prediction/       # Risk prediction models
-│   ├── feature_engineering/   # Feature engineering
-│   └── model_training/        # Training scripts
-├── tests/                      # Integration tests
-├── docs/                       # Documentation
-├── docker-compose.yml          # Multi-container setup
-├── .env.example                # Environment template
-└── README.md                   # This file
+👤 Admin
+   Login: admin / admin123
+
+👨‍🎓 Learner (Student)
+   Login: student1 / student123
+
+👨‍🏫 Lecturer (Faculty)  
+   Login: lecturer1 / lecturer123
+
+👤 Coordinator (Support)
+   Login: coordinator1 / coord123
 ```
 
-## 🔧 Technology Stack
+---
 
-**Backend**: Django 4.2, Python 3.11, PostgreSQL, Redis, Elasticsearch
-**Frontend**: React 18, TypeScript, Material-UI, Redux
-**ML/Data**: scikit-learn, TensorFlow, pandas, NumPy
-**DevOps**: Docker, Kubernetes, GitHub Actions, Prometheus, Grafana
+## 📊 System Comparison
 
-## 📚 Documentation
+| Feature | One-Click | Docker |
+|---------|-----------|--------|
+| **Setup Time** | 30 sec | 10 min |
+| **Knowledge Needed** | None | Docker basics |
+| **RAM Required** | 1GB | 8GB |
+| **Disk Space** | 500MB | 2GB |
+| **Learner Portal** | ✅ Yes | ✅ Yes |
+| **Lecturer Dashboard** | ✅ Yes | ✅ Yes |
+| **Coordinator Tools** | ✅ Yes | ✅ Yes |
+| **Admin Dashboard** | ✅ Yes | ✅ Yes |
+| **Risk Scoring** | ✅ Yes | ✅ Yes |
+| **Interventions** | ✅ Yes | ✅ Yes |
+| **Analytics** | ✅ Yes | ✅ Yes |
+| **Alerts** | ✅ Yes | ✅ Yes |
+| **Monitoring** | Basic | Advanced |
+| **Best For** | Trials, demos | Production |
 
-- [Installation Guide](docs/installation/README.md)
-- [API Documentation](docs/api/README.md)
-- [Architecture Guide](docs/architecture/README.md)
-- [User Guides](docs/user_guides/)
-- [Development Guide](docs/development/README.md)
-- [Getting Started](GETTING_STARTED.md)
-- [Project Overview](PROJECT_OVERVIEW.md)
+---
 
-## 🤝 Contributing
+## 📖 Quick Navigation
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+| Document | Purpose | Users |
+|----------|---------|-------|
+| [INSTALL.md](INSTALL.md) | How to choose your path | Everyone |
+| [START_HERE.md](START_HERE.md) | Quick overview | Everyone |
+| [STANDALONE_GUIDE.md](STANDALONE_GUIDE.md) | One-click detailed guide | One-click users |
+| [QUICK_START.md](QUICK_START.md) | Docker detailed guide | Docker users |
+| [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md) | Business & technical details | Leadership |
 
-## 📄 License
+---
 
-MIT License - See [LICENSE](LICENSE) for details.
+## 🚀 Get Started Now (Choose One)
 
-## 💬 Support
+### For Most Users - One-Click Version:
+**[Download and Run NWU-Student-System.exe →](STANDALONE_GUIDE.md)**
 
-For issues, questions, or suggestions:
-- Open an issue on [GitHub Issues](https://github.com/TshifTAJ/nwu-at-risk-student-system/issues)
-- See [docs/support/](docs/support/) for troubleshooting
+### For Developers - Docker Version:
+**[Clone Repository and Use Docker Compose →](QUICK_START.md)**
 
-## 🎓 Next Steps
+---
 
-1. ✅ Clone the repository
-2. ✅ Setup environment variables
-3. ✅ Run `docker-compose up -d`
-4. ✅ Access http://localhost:3000
-5. ✅ Login with test credentials
-6. 📖 Read the documentation
-7. 🧪 Run the tests
-8. 🚀 Deploy to production
+## 📋 System Requirements
 
-Happy coding! 🎉
+### One-Click Version
+- ✅ Windows 7+ (64-bit)  
+- ✅ 1GB RAM
+- ✅ 500MB disk space
+- ✅ No Docker needed
+- ✅ No Git needed
+- ✅ No terminal knowledge needed
+
+### Docker Version
+- ✅ Windows/Mac/Linux
+- ✅ 8GB RAM
+- ✅ 2GB disk space
+- ✅ Docker installed
+- ✅ Git installed
+- ✅ Basic Docker knowledge
+
+---
+
+## 📞 Support
+
+- **One-Click Issues:** See [STANDALONE_GUIDE.md - Troubleshooting](STANDALONE_GUIDE.md#-troubleshooting)
+- **Docker Issues:** See [QUICK_START.md - Troubleshooting](QUICK_START.md#-troubleshooting)
+- **General Questions:** Open issue on GitHub
+
+---
+
+## 🎓 About This System
+
+This comprehensive system for North-West University combines:
+- **Predictive Analytics** - ML-powered risk scoring
+- **Real-time Monitoring** - Live alerts and notifications
+- **Intervention Management** - Coordinated support services
+- **Success Tracking** - Student outcome measurement
+
+**Goal:** Improve student retention, success, and equity through data-driven early intervention.
+
+---
+
+## ✨ What Makes This Special
+
+✅ **Two Installation Paths** - Choose based on your technical comfort  
+✅ **Same Features** - Both systems do everything  
+✅ **All 4 User Roles** - Complete for everyone  
+✅ **Easy to Use** - Simple or advanced  
+✅ **Production Ready** - Both options are enterprise-grade  
+✅ **Well Documented** - Comprehensive guides included  
+
+---
+
+**Ready to get started?**
+
+## [👉 Click Here to Choose Your Installation Method](INSTALL.md)
+
+Or jump directly to:
+- **[One-Click Setup (30 seconds)](STANDALONE_GUIDE.md)** - Just download and run
+- **[Docker Setup (10 minutes)](QUICK_START.md)** - Full developer control
+
+---
+
+**Questions? Check the guides above or open an issue on GitHub.** 💬
